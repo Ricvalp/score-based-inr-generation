@@ -1,0 +1,2 @@
+from trainer.pixel_trainer import TrainerModulePixel
+from trainer.nef_trainer import TrainerModuleNef

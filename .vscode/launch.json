@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "train_pixels.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/train_pixels.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--task=config/pixels.py:train"],
+            "env": {"DATA_PATH":"/home/riccardo/data", "PYTHONPATH": "${workspaceFolder}"}
+        },
+        {
+            "name": "sample_pixels.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/sample_pixels.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--task=config/pixels.py:sample_from_last"],
+            "env": {"DATA_PATH":"/home/riccardo/data", "PYTHONPATH": "${workspaceFolder}"}
+        },
+        {
+            "name": "train_nefs.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/train_nefs.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--task=config/nefs.py:train"],
+            "env": {"DATA_PATH":"/home/riccardo/data", "PYTHONPATH": "${workspaceFolder}"}
+        },
+        {
+            "name": "sample_nefs.py",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/sample_nefs.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": ["--task=config/nefs.py:sample_from_last"],
+            "env": {"DATA_PATH":"/home/riccardo/data", "PYTHONPATH": "${workspaceFolder}"}
+        }
+    ]
+}

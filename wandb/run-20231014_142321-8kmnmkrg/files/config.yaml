@@ -1,0 +1,90 @@
+wandb_version: 1
+
+_fields:
+  desc: null
+  value:
+    sigma: 25
+    model_name: model
+    checkpoint_dir: checkpoints/2023-10-14_14-23-20/model
+    overwite_checkpoint: true
+    seed: 42
+    wandb: 'project_name: score-based-model-inr
+
+      wandb_log: true
+
+      '
+    dataset: 'batch_size: 256
+
+      data_pipe_class: NeFClassificationDatapipe
+
+      data_prefix: t
+
+      num_workers: 0
+
+      path: /home/riccardo/Documents/NEW-PROJECTS/nefs/contrastive_inr/saved_models/dws/MNIST/SIREN/
+
+      persistent_workers: true
+
+      preload: true
+
+      seed: 42
+
+      shuffle_slice: true
+
+      split:
+
+      - 50000
+
+      - 10000
+
+      - 10000
+
+      '
+    train: 'lr: 0.001
+
+      num_epochs: 10
+
+      '
+    experiment_dir: visualizations/2023-10-14_14-23-20
+    sample: 'sample_batch_size: 64
+
+      '
+_locked:
+  desc: null
+  value: true
+_type_safe:
+  desc: null
+  value: true
+_convert_dict:
+  desc: null
+  value: true
+_wandb:
+  desc: null
+  value:
+    python_version: 3.9.0
+    cli_version: 0.15.0
+    framework: torch
+    is_jupyter_run: false
+    is_kaggle_kernel: true
+    start_time: 1697286201.552212
+    t:
+      1:
+      - 1
+      - 12
+      - 41
+      - 45
+      - 55
+      2:
+      - 1
+      - 12
+      - 41
+      - 45
+      - 55
+      3:
+      - 16
+      - 23
+      4: 3.9.0
+      5: 0.15.0
+      8:
+      - 2
+      - 5

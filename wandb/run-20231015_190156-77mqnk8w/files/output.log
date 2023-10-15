@@ -1,0 +1,13 @@
+I1015 19:02:00.565395 140071172577088 xla_bridge.py:622] Unable to initialize backend 'rocm': NOT_FOUND: Could not find registered platform with name: "rocm". Available platform names are: CUDA Interpreter
+I1015 19:02:00.567542 140071172577088 xla_bridge.py:622] Unable to initialize backend 'tpu': module 'jaxlib.xla_extension' has no attribute 'get_tpu_client'
+
+
+
+
+
+
+
+
+
+
+loss: 904.042175: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 10/10 [00:56<00:00,  5.69s/step]
