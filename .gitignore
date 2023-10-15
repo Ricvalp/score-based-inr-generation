@@ -7,10 +7,9 @@ __pycache__/
 *.so
 
 checkpoints
-.precommit-config.yaml
 wandb
 visualizations
-checkpoints
+data
 .vscode
 
 # Distribution / packaging
