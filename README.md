@@ -79,7 +79,7 @@ python train_pixels.py --task=config/pixels.py:train
 ```
 
 ```bash
-python train_nefs.py --task=config/nefs.py:train
+python train_nefs.py --task=config/nefs.py:train --task.dataset.path = "path/to/dataset"
 ```
 
 To sample using the last checkpoint, run:
@@ -93,6 +93,12 @@ python sample_pixels.py --task=config/pixels.py:sample_from_last
 python sample_nefs.py --task=config/nefs.py:sample_from_last
 ```
 
+
+To plot images from the INRs dataset run
+
+```bash
+python sample_nefs.py --task=config/nefs.py:sample_from_last --task.sample.sample_from_dataset=True
+```
 
 
 <!-- In particular:
