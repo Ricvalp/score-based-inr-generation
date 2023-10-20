@@ -1,24 +1,24 @@
-import torch
-
-from absl import app
-from absl import logging
-from ml_collections import config_flags
-from pathlib import Path
 import functools
+import json
+import os
+from functools import partial
+from glob import glob
+from pathlib import Path
+
+import h5py
+import torch
+from absl import app, logging
+from ml_collections import config_flags
+
 import wandb
-
 from config import load_cfgs
-
 from dataset.nef_dataset import build_nef_data_loader_group
 from dataset.nef_dataset.augmentations import combine_data
-
-from functools import partial
-
-from trainer import TrainerModuleNef
 from score_based_model.utils import marginal_prob_std
+from trainer import TrainerModuleNef
 
+_CFG_FILE = config_flags.DEFINE_config_file("task", default="config/nefs.py:train")
 
-_CFG_FILE = config_flags.DEFINE_config_file("task", default="config/config.py:train")
 
 def main(_):
     cfg = load_cfgs(_CFG_FILE)
@@ -33,7 +33,12 @@ def main(_):
     wandb.init(project=cfg.wandb.project_name, config=cfg)
 
     data_config = cfg.dataset
-    
+
+    storage_folder = Path(data_config.path)
+    nef_paths = glob(os.path.join(storage_folder, "*.hdf5"))
+    with h5py.File(nef_paths[0], "r") as f:
+        param_config = json.loads(f["param_config"][0].decode("utf-8"))
+
     collate_fn = partial(combine_data, combine_op=torch.stack)
     data_loaders = build_nef_data_loader_group(
         data_config,
@@ -42,7 +47,7 @@ def main(_):
     )
     train_loader, _, _ = data_loaders
 
-    sigma =  cfg.sigma
+    sigma = cfg.sigma
     marginal_prob_std_fn = functools.partial(marginal_prob_std, sigma=sigma)
 
     trainer = TrainerModuleNef(
@@ -51,6 +56,7 @@ def main(_):
         marginal_prob_std_fn=marginal_prob_std_fn,
         lr=cfg.train.lr,
         wandb_log=cfg.wandb.wandb_log,
+        param_config=param_config,
         seed=42,
     )
 
